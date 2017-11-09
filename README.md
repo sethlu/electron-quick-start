@@ -1,18 +1,22 @@
 # electron-quick-start
 
-**Clone and run for a quick way to see an Electron in action.**
+This fork presents a reproduction of issue [electron-osx-sign#155](https://github.com/electron-userland/electron-osx-sign/issues/155) that results in failure to code sign apps on macOS High Sierra (only tested platform).
 
-This is a minimal Electron application based on the [Quick Start Guide](http://electron.atom.io/docs/latest/tutorial/quick-start) within the Electron documentation.
+There are three related scripts to this demo; before running, ensure that a `Mac Developer` certificate is installed in the system default keychain and that a development provisioning profile is placed in the current working directory for `electron-osx-sign` to pick up.
 
-**Use this app along with the [Electron API Demos](http://electron.atom.io/#get-started) app for API code examples to help you get started.**
+- `npm run package-test`
 
-A basic Electron application needs just these files:
+  To ensure that by default the app could function after codesigned with App Sandbox enabled, this command packages and signs a demo application that should be able to run with ease.
 
-- `package.json` - Points to the app's main file and lists its details and dependencies.
-- `main.js` - Starts the app and creates a browser window to render HTML. This is the app's **main process**.
-- `index.html` - A web page to render. This is the app's **renderer process**.
+- `npm run package-test-fail`
 
-You can learn more about each of these components within the [Quick Start Guide](http://electron.atom.io/docs/latest/tutorial/quick-start).
+  App packaging should work, but codesigning should fail.
+
+- `npm run package-test-succeed`
+
+  App packaging and codesigning should both succeed.
+
+More discussions related to this issue should be found on [electron-osx-sign#155](https://github.com/electron-userland/electron-osx-sign/issues/155).
 
 ## To Use
 
@@ -23,8 +27,8 @@ To clone and run this repository you'll need [Git](https://git-scm.com) and [Nod
 git clone https://github.com/electron/electron-quick-start
 # Go into the repository
 cd electron-quick-start
-# Install dependencies and run the app
-npm install && npm start
+# Install dependencies
+npm install
 ```
 
 Learn more about Electron and its API in the [documentation](http://electron.atom.io/docs/latest).

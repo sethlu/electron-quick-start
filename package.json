@@ -4,7 +4,10 @@
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron main.js"
+    "start": "electron main.js",
+    "package-test": "electron-packager . test --platform=mas --out=out --overwrite --osx-sign.type=development",
+    "package-test-fail": "electron-packager . têst --platform=mas --out=out --overwrite --osx-sign.type=development",
+    "package-test-succeed": "electron-packager . têst --platform=mas --out=out --overwrite --osx-sign.type=development"
   },
   "repository": {
     "type": "git",
@@ -23,6 +26,8 @@
   },
   "homepage": "https://github.com/electron/electron-quick-start#readme",
   "devDependencies": {
+    "electron-osx-sign": "^0.4.7",
+    "electron-packager": "^9.1.0",
     "electron-prebuilt": "^1.2.0"
   }
 }
